@@ -38,6 +38,9 @@ public slots:
     void action_made()
     {
         scene_->update();
+//        scene_ = new QGraphicsScene();
+//        draw_scene();
+//        view_->setScene(scene_);
     }
 };
 

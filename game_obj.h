@@ -25,13 +25,10 @@ public:
                setRect(rect_);
                setPen(pen_);
                setBrush(brush_);
-               setFlags(QGraphicsItem::ItemIsSelectable |
-                        QGraphicsItem::ItemIsFocusable);
-               setAcceptHoverEvents(true);
         }
     QRectF boundingRect() const override { return rect_; }
     void set_vecpos(QPoint point){ vec_pos_ = point ; }
-    void set_drawrec(QRectF rect) { rect_ = rect; }
+    void set_drawrec(QRectF rect) { rect_ = rect; setRect(rect_); }
 //protected:
     name   name_;
     QRectF rect_;

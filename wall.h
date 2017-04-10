@@ -16,11 +16,16 @@ public:
                    QPen(Qt::black), parent),
           is_free_(is_free)
     {
-
+        setAcceptHoverEvents(true);
     }
 
     bool is_free () const    { return is_free_; }
-    void set_stan(bool stan) { is_free_ = stan; }
+    void set_stan(bool stan)
+    {
+        is_free_ = stan;
+        setBrush(is_free_ ? Qt::white : Qt::black);
+        update();
+    }
 
 protected:
     void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override
@@ -35,12 +40,9 @@ protected:
     }
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override
     {
-        is_free_ = !is_free_;
-        if(is_free_)
-            setBrush(Qt::white);
-        else
-            setBrush(Qt::black);
-        update();
+//        is_free_ = !is_free_;
+//        setBrush(is_free_ ? Qt::white : Qt::black);
+//        update();
         emit wall_changed(vec_pos_, is_free_);
     }
 
